@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #ff6f61;
+            --secondary-color: #ffe0dc;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-color);
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 3rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* About Us Page */
+        #about {
+            text-align: center;
+        }
+
+        #about img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 1.5rem auto;
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            text-align: justify;
+            margin: 1.5rem 0;
+        }
+
+        #about .description {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* Gallery Page */
+        #gallery {
+            text-align: center;
+        }
+
+        .carousel {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .carousel img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Page */
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        input, textarea, button {
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--text-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--text-color);
+            transform: scale(1.05);
+        }
+
+        /* Ecommerce Page */
+        #products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .product-details {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-details h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .product-details button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-details button:hover {
+            background-color: var(--text-color);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>Welcome to [Bakery Name]</header>
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a href="#shop">Shop</a>
+    </nav>
+
+    <section id="about">
+        <h1>About Us</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tincidunt nunc a fermentum. Curabitur sit amet orci non nulla sollicitudin varius.</p>
+        <img src="https://via.placeholder.com/600x400" alt="Bakery or Owner">
+        <p class="description">Our bakery is run by [Owner's Name], a passionate baker with over 10 years of experience crafting delicious pastries and bread. Every recipe is made with love, using the finest ingredients to ensure the best quality and taste. Whether it's a classic croissant or a special occasion cake, [Owner's Name] takes pride in bringing joy to every customer through their baked goods.</p>
+    </section>
+
+    <section id="gallery">
+        <h1>Our Baked Goods</h1>
+        <div class="carousel">
+            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+1" alt="Baked Good 1"></a>
+            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+2" alt="Baked Good 2"></a>
+            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+3" alt="Baked Good 3"></a>
+            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+4" alt="Baked Good 4"></a>
+        </div>
+    </section>
+
+    <section id="shop">
+        <h1>Shop Our Products</h1>
+        <div id="products">
+            <div class="product">
+                <img src="https://via.placeholder.com/250x250?text=Croissant" alt="Croissant">
+                <div class="product-details">
+                    <h3>Croissant</h3>
+                    <p>Flaky and buttery croissant, perfect for breakfast.</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x250?text=Baguette" alt="Baguette">
+                <div class="product-details">
+                    <h3>Baguette</h3>
+                    <p>Classic French baguette with a crispy crust.</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x250?text=Chocolate+Cake" alt="Chocolate Cake">
+                <div class="product-details">
+                    <h3>Chocolate Cake</h3>
+                    <p>Rich and moist chocolate cake for all occasions.</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x250?text=Cupcakes" alt="Cupcakes">
+                <div class="product-details">
+                    <h3>Cupcakes</h3>
+                    <p>Delicious cupcakes with a variety of flavors.</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 [Bakery Name]. All Rights Reserved.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+        });
+    </script>
+</body>
+</html>
