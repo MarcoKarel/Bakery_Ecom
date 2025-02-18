@@ -3,308 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <style>
-        /* General Styles */
-        :root {
-            --primary-color: #ff6f61;
-            --secondary-color: #ffe0dc;
-            --text-color: #333;
-            --background-color: #f9f9f9;
-            --font-family: 'Poppins', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-color);
-            transform: scale(1.1);
-        }
-
-        section {
-            padding: 3rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* About Us Page */
-        #about {
-            text-align: center;
-        }
-
-        #about img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            display: block;
-            margin: 1.5rem auto;
-        }
-
-        #about p {
-            font-size: 1.1rem;
-            text-align: justify;
-            margin: 1.5rem 0;
-        }
-
-        #about .description {
-            margin-top: 2rem;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            line-height: 1.8;
-        }
-
-        /* Gallery Page */
-        #gallery {
-            text-align: center;
-        }
-
-        .carousel {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .carousel img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .carousel img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Contact Page */
-        form {
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        input, textarea, button {
-            padding: 1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--text-color);
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background-color: var(--text-color);
-            transform: scale(1.05);
-        }
-
-        /* Ecommerce Page */
-        #products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .product {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .product img {
-            width: 100%;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .product-details {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .product-details h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-details p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .product-details button {
-            padding: 0.5rem 1rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .product-details button:hover {
-            background-color: var(--text-color);
-            transform: scale(1.1);
-        }
-    </style>
+    <title>Blossom Bakery | Artisan Breads & Pastries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <header>Welcome to [Bakery Name]</header>
-    <nav>
-        <a href="#about">About Us</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-        <a href="#shop">Shop</a>
-    </nav>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">Blossom Bakery</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-    <section id="about">
-        <h1>About Us</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tincidunt nunc a fermentum. Curabitur sit amet orci non nulla sollicitudin varius.</p>
-        <img src="https://via.placeholder.com/600x400" alt="Bakery or Owner">
-        <p class="description">Our bakery is run by [Owner's Name], a passionate baker with over 10 years of experience crafting delicious pastries and bread. Every recipe is made with love, using the finest ingredients to ensure the best quality and taste. Whether it's a classic croissant or a special occasion cake, [Owner's Name] takes pride in bringing joy to every customer through their baked goods.</p>
-    </section>
-
-    <section id="gallery">
-        <h1>Our Baked Goods</h1>
-        <div class="carousel">
-            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+1" alt="Baked Good 1"></a>
-            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+2" alt="Baked Good 2"></a>
-            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+3" alt="Baked Good 3"></a>
-            <a href="gallery.html"><img src="https://via.placeholder.com/800x400?text=Baked+Good+4" alt="Baked Good 4"></a>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Fresh Baked Happiness</h1>
+            <p>Artisan breads & pastries made with love</p>
         </div>
     </section>
 
-    <section id="shop">
-        <h1>Shop Our Products</h1>
-        <div id="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Croissant" alt="Croissant">
-                <div class="product-details">
-                    <h3>Croissant</h3>
-                    <p>Flaky and buttery croissant, perfect for breakfast.</p>
-                    <button>Add to Cart</button>
-                </div>
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0" alt="Our Bakery Team">
             </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Baguette" alt="Baguette">
-                <div class="product-details">
-                    <h3>Baguette</h3>
-                    <p>Classic French baguette with a crispy crust.</p>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Chocolate+Cake" alt="Chocolate Cake">
-                <div class="product-details">
-                    <h3>Chocolate Cake</h3>
-                    <p>Rich and moist chocolate cake for all occasions.</p>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Cupcakes" alt="Cupcakes">
-                <div class="product-details">
-                    <h3>Cupcakes</h3>
-                    <p>Delicious cupcakes with a variety of flavors.</p>
-                    <button>Add to Cart</button>
-                </div>
+            <div class="about-content">
+                <h2>Our Story</h2>
+                <p>Since 2010, Blossom Bakery has been crafting unforgettable experiences through our artisan baked goods. What began as a small family kitchen has blossomed into a beloved community institution.</p>
+                <p>Our passion lies in combining traditional recipes with modern techniques, using only the finest locally-sourced ingredients. Every morning, our master bakers begin work before dawn to ensure you receive the freshest products possible.</p>
+                <p>We believe in baking with love - it's not just our secret ingredient, it's our promise to you.</p>
+                <span class="signature">The Blossom Family</span>
             </div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2025 [Bakery Name]. All Rights Reserved.
+    <section class="products-grid" id="menu">
+        <div class="product-card">
+            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587')"></div>
+            <div class="product-info">
+                <h3>Signature Croissants</h3>
+                <p>Buttery layers of perfection</p>
+            </div>
+        </div>
+        <!-- Add more product cards -->
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Order Now</h2>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea class="form-input" rows="5" placeholder="Your Order Details"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Order Request</button>
+        </form>
+    </section>
+
+     <!-- Add this footer before closing body -->
+     <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:orders@blossombakery.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p class="copyright">
+            © 2025 Blossom Bakery • Fresh Baked Happiness<br>
+            Follow us for daily updates and special offers!
+        </p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.carousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                adaptiveHeight: true
-            });
-        });
-    </script>
 </body>
 </html>
+<style>
+    /* Modern Color Scheme */
+    :root {
+        --primary-pink: #FFB6C1;
+        --dark-pink: #FF69B4;
+        --off-white: #FFF8F0;
+        --text-dark: #4A4A4A;
+    }
+
+    /* Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Playfair Display', serif;
+        background-color: var(--off-white);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Sacramento', cursive;
+        font-weight: 400;
+    }
+
+    /* Social Links Footer */
+    .social-footer {
+        background: var(--primary-pink);
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-3px);
+        color: var(--off-white);
+    }
+
+    .copyright {
+        color: white;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Active navigation state */
+    .nav-links a.active {
+        color: var(--dark-pink) !important;
+        border-bottom: 2px solid var(--dark-pink);
+    }
+
+    /* Modern Header with Fixed Navigation */
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-family: 'Sacramento', cursive;
+        font-size: 2.5rem;
+        color: var(--dark-pink);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--dark-pink);
+    }
+
+    /* Updated Hero Section */
+    .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(146, 67, 105, 0.6), rgba(146, 67, 105, 0.6)),
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+    /* Featured Products Grid */
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .product-image {
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .product-info {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    /* Modern Contact Form */
+    .contact-section {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid var(--primary-pink);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--dark-pink);
+    }
+
+    .submit-btn {
+        background: var(--dark-pink);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+     /* About Section - Modern Split Layout */
+     .about-section {
+        padding: 8rem 2rem;
+        background: white;
+    }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .about-image {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    .about-content {
+        padding: 2rem;
+    }
+
+    .about-content h2 {
+        font-size: 2.5rem;
+        color: var(--dark-pink);
+        margin-bottom: 1.5rem;
+    }
+
+    .about-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+
+    .signature {
+        font-family: 'Sacramento', cursive;
+        font-size: 2rem;
+        color: var(--dark-pink);
+    }
+
+    @media (max-width: 768px) {
+        .about-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        
+        .about-image {
+            order: -1;
+        }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.nav-links a');
+        
+        function setActive() {
+            const scrollPos = window.scrollY;
+            
+            links.forEach(link => {
+                const section = document.querySelector(link.hash);
+                if (section.offsetTop <= scrollPos + 150 && 
+                    section.offsetTop + section.offsetHeight > scrollPos + 150) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', setActive);
+        window.addEventListener('load', setActive);
+    });
+</script>
